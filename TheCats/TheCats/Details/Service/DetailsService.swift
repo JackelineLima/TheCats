@@ -6,8 +6,14 @@ protocol DetailsServicing {
 
 final class DetailsService: DetailsServicing {
   
+  private let networkManager: NetworkManager
+  
+  init(networkManager: NetworkManager = NetworkManager()) {
+    self.networkManager = networkManager
+  }
+  
   func getPhoto(breed: String, completion: @escaping (Result<[CatImage], NetworkResponse>) -> Void) {
     let endpoint = DetailsEndPoint.getImage(breed: breed)
-    NetworkManager().execute(endpoint: endpoint, completion: completion)
+    networkManager.execute(endpoint: endpoint, completion: completion)
   }
 }
