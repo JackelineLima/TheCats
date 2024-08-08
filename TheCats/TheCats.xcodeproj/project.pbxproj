@@ -146,9 +146,20 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		7C411F522C650BA500F12CEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A723E06C2B2C77B800C22117 /* Assets.xcassets */,
+				A723E06E2B2C77B800C22117 /* LaunchScreen.storyboard */,
+				A723E0712B2C77B800C22117 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		A715A8952B2CA22500F8DCFF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A7C21D402B2CE26D004FE5BF /* DetailModel.swift */,
 				A723E0C32B2C930800C22117 /* DetailsEndpoint.swift */,
 				A723E0C52B2C9BE200C22117 /* DetailsResponse.swift */,
 				A723E0C12B2C930000C22117 /* DetailsService.swift */,
@@ -179,12 +190,10 @@
 			isa = PBXGroup;
 			children = (
 				7C411F4F2C6504D700F12CEB /* Core */,
+				A7C21D3D2B2CDF93004FE5BF /* Extensions */,
+				7C411F522C650BA500F12CEB /* Resources */,
 				7C411F4E2C6504B800F12CEB /* Scenes */,
 				A7D497982B2DE421000BD1C6 /* Sources */,
-				A7C21D3D2B2CDF93004FE5BF /* Extensions */,
-				A723E06C2B2C77B800C22117 /* Assets.xcassets */,
-				A723E06E2B2C77B800C22117 /* LaunchScreen.storyboard */,
-				A723E0712B2C77B800C22117 /* Info.plist */,
 			);
 			path = TheCats;
 			sourceTree = "<group>";
@@ -242,7 +251,6 @@
 				A723E0B72B2C896300C22117 /* DetailsFactory.swift */,
 				A723E0B92B2C896E00C22117 /* DetailsViewController.swift */,
 				A723E0BB2B2C897800C22117 /* DetailsViewModel.swift */,
-				A7C21D402B2CE26D004FE5BF /* DetailModel.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";

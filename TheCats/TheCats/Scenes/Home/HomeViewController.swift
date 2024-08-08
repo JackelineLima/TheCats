@@ -2,7 +2,6 @@ import UIKit
 
 protocol HomeViewDisplay: AnyObject {
   func reloadTableView()
-  func displayError(title: String)
 }
 
 // MARK: - Class
@@ -36,23 +35,8 @@ final class HomeViewController: UITableViewController {
 // MARK: - HomeViewDisplay
 
 extension HomeViewController: HomeViewDisplay {
-  func displayError(title: String) {
-    let alertController = UIAlertController(
-      title: "Ops algo deu errado!",
-      message: title,
-      preferredStyle: .alert
-    )
-    let ok = UIAlertAction(title: "OK", style: .default)
-    alertController.addAction(ok)
-    DispatchQueue.main.async { [weak self] in
-      self?.present(alertController, animated: true, completion: nil)
-    }
-  }
-  
   func reloadTableView() {
-    DispatchQueue.main.async { [weak self] in
-      self?.tableView.reloadData()
-    }
+    tableView.reloadData()
   }
 }
 

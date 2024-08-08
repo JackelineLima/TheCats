@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - HomeViewModelProtocol
-
 protocol HomeViewModelProtocol: AnyObject {
   func getCats(limit: Int, page: Int)
   var items: [Cats] { get }
@@ -16,10 +14,12 @@ final class HomeViewModel {
   private var cats: [Cats] = []
   private let service: HomeServicing
   private let coordinator: HomeCoordinator
+  private let scheduler: Scheduler
   
-  init(service: HomeServicing, coordinator: HomeCoordinator) {
+  init(service: HomeServicing, coordinator: HomeCoordinator, scheduler: Scheduler = DispatchQueue.main) {
     self.service = service
     self.coordinator = coordinator
+    self.scheduler = scheduler
   }
 }
 
@@ -29,12 +29,14 @@ extension HomeViewModel: HomeViewModelProtocol {
   func getCats(limit: Int, page: Int) {
     service.getCats(limit: limit, page: page) { [weak self] (response: Result<[Cats], NetworkResponse>) in
       guard let self = self else { return }
-      switch response {
-      case .success(let cats):
-        self.cats = cats
-        self.viewController?.reloadTableView()
-      case .failure:
-        self.viewController?.displayError(title: "Tente novamente mais tarde!")
+      self.scheduler.schedule {
+        switch response {
+        case .success(let cats):
+          self.cats = cats
+          self.viewController?.reloadTableView()
+        case .failure:
+          self.coordinator.openError(title: "Tente novamente mais tarde!")
+        }
       }
     }
   }
@@ -44,6 +46,6 @@ extension HomeViewModel: HomeViewModelProtocol {
   }
   
   func didSelectRowAt(item: Cats) {
-    coordinator.presentDetails(item: item)
+    coordinator.openDetails(item: item)
   }
 }

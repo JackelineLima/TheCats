@@ -12,9 +12,11 @@ final class DetailsViewModel {
   private let service: DetailsServicing
   private var cat: Cats
   private var imageUrl: String?
+  private let scheduler: Scheduler
   
-  init(service: DetailsServicing, cat: Cats) {
+  init(service: DetailsServicing, scheduler: Scheduler = DispatchQueue.main, cat: Cats) {
     self.service = service
+    self.scheduler = scheduler
     self.cat = cat
   }
 }
@@ -26,17 +28,18 @@ extension DetailsViewModel: DetailsViewModelProtocol {
     viewController?.load()
     service.getPhoto(breed: cat.id) { [weak self] (response: Result<[CatImage], NetworkResponse>) in
       guard let self = self else { return }
-      switch response {
-      case .success(let image):
-        if let item = image.first {
-          self.imageUrl = item.url
+      self.scheduler.schedule {
+        switch response {
+        case .success(let image):
+            if let item = image.first {
+              self.imageUrl = item.url
+            }
+            
+            self.buildData(imageUrl: self.imageUrl)
+            self.viewController?.stop()
+        case .failure:
+          self.viewController?.stop()
         }
-        DispatchQueue.main.async {
-          self.buildData(imageUrl: self.imageUrl)
-        }
-        self.viewController?.stop()
-      case .failure:
-        self.viewController?.stop()
       }
     }
   }
@@ -44,7 +47,7 @@ extension DetailsViewModel: DetailsViewModelProtocol {
 
 // MARK: - Private methods
 
-extension DetailsViewModel {
+private extension DetailsViewModel {
   func buildData(imageUrl: String?) {
     let model = DetailModel(
       imageUrl: imageUrl,

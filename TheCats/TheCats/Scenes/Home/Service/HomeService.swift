@@ -1,5 +1,15 @@
 import Foundation
 
+protocol Scheduler {
+    func schedule(task: @escaping () -> Void)
+}
+
+extension DispatchQueue: Scheduler {
+    func schedule(task: @escaping () -> Void) {
+        async(execute: task)
+    }
+}
+
 protocol HomeServicing {
   func getCats(limit: Int, page: Int, completion: @escaping (Result<[Cats], NetworkResponse>) -> Void)
 }
