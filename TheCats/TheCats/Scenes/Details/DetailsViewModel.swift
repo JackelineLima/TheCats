@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - DetailsViewModelProtocol
-
 protocol DetailsViewModelProtocol: AnyObject {
   func getPhoto()
 }

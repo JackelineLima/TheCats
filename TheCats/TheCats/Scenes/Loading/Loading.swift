@@ -2,14 +2,14 @@ import UIKit
 
 // MARK: - Public protocol
 
-public protocol Loading: AnyObject {
+protocol Loading: AnyObject {
   func startLoading()
   func stopLoading(completion: (() -> Void)?)
 }
 
 // MARK: - Public extension
 
-public extension Loading where Self: UIViewController {
+extension Loading where Self: UIViewController {
   
   // MARK: - Public methods
   
@@ -49,15 +49,5 @@ public extension Loading where Self: UIViewController {
         }
       }
     }
-  }
-}
-
-extension UIView {
-  func anchorEqualTo(view: UIView) {
-    translatesAutoresizingMaskIntoConstraints = false
-    topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-    leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
 }

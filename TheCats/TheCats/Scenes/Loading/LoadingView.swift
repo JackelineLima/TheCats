@@ -1,33 +1,27 @@
 import UIKit
 
-// MARK: - Public cslass
+// MARK: - Class
 
-public final class UDSLoadingView: UIView {
+ final class UDSLoadingView: UIView {
 
   // MARK: - Private properties
   
-  private let backgroundView: UIView = {
-    let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
-  }()
+  private let backgroundView = UIView()
   
   private let contentView: UIView = {
     let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
   
   private let activityLoader: UIActivityIndicatorView = {
     let activity = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     activity.hidesWhenStopped = true
-    activity.translatesAutoresizingMaskIntoConstraints = false
     return activity
   }()
   
   // MARK: - Life Cicle
   
-  public init() {
+   init() {
     super.init(frame: CGRect.zero)
     buildLayout()
   }
@@ -46,18 +40,14 @@ private extension UDSLoadingView  {
   }
   
   func buildViewHierarchy() {
-    contentView.addSubview(activityLoader)
-    backgroundView.addSubview(contentView)
-    addSubview(backgroundView)
+    contentView.addSubviews(activityLoader)
+    backgroundView.addSubviews(contentView)
+    addSubviews(backgroundView)
   }
   
   func setupConstraints() {
+    backgroundView.anchorEqualTo(view: self)
     NSLayoutConstraint.activate([
-      backgroundView.topAnchor.constraint(equalTo: topAnchor),
-      backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      
       contentView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
       contentView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
       contentView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),

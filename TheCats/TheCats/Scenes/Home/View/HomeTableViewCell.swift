@@ -12,7 +12,6 @@ final class HomeTableViewCell: UITableViewCell {
   
   private let containerView: UIView = {
     let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = UIColor.white
     return view
   }()
@@ -21,13 +20,11 @@ final class HomeTableViewCell: UITableViewCell {
     let label = UILabel()
     label.numberOfLines = 0
     label.font = .systemFont(ofSize: 16, weight: UIFont.Weight.bold)
-    label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
   
   private let iconImageView: UIImageView = {
     let image = UIImageView()
-    image.translatesAutoresizingMaskIntoConstraints = false
     image.image = UIImage(named: "uds-chevron-right")
     image.tintColor = UIColor.black
     return image
@@ -59,9 +56,8 @@ extension HomeTableViewCell {
 
 private extension HomeTableViewCell {
   func buildViewHierachy() {
-    contentView.addSubview(containerView)
-    containerView.addSubview(titleLabel)
-    containerView.addSubview(iconImageView)
+    contentView.addSubviews(containerView)
+    containerView.addSubviews(titleLabel, iconImageView)
   }
   
   func buildViewConstraints() {

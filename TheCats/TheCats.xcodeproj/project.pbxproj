@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C411F512C65062C00F12CEB /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C411F502C65062C00F12CEB /* UIView+Extensions.swift */; };
 		A715A8972B2CA29300F8DCFF /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A715A8962B2CA29300F8DCFF /* DetailsView.swift */; };
 		A723E0642B2C77B700C22117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723E0632B2C77B700C22117 /* AppDelegate.swift */; };
 		A723E0662B2C77B700C22117 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723E0652B2C77B700C22117 /* SceneDelegate.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C411F502C65062C00F12CEB /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A715A8962B2CA29300F8DCFF /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		A723E0602B2C77B700C22117 /* TheCats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheCats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A723E0632B2C77B700C22117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C411F4E2C6504B800F12CEB /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A7D497912B2DD2BD000BD1C6 /* Loading */,
+				A723E0B62B2C894B00C22117 /* Details */,
+				A723E09E2B2C872100C22117 /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7C411F4F2C6504D700F12CEB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A723E0932B2C872100C22117 /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		A715A8952B2CA22500F8DCFF /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,12 +178,10 @@
 		A723E0622B2C77B700C22117 /* TheCats */ = {
 			isa = PBXGroup;
 			children = (
+				7C411F4F2C6504D700F12CEB /* Core */,
+				7C411F4E2C6504B800F12CEB /* Scenes */,
 				A7D497982B2DE421000BD1C6 /* Sources */,
 				A7C21D3D2B2CDF93004FE5BF /* Extensions */,
-				A7D497912B2DD2BD000BD1C6 /* Loading */,
-				A723E0B62B2C894B00C22117 /* Details */,
-				A723E09E2B2C872100C22117 /* Home */,
-				A723E0932B2C872100C22117 /* Networking */,
 				A723E06C2B2C77B800C22117 /* Assets.xcassets */,
 				A723E06E2B2C77B800C22117 /* LaunchScreen.storyboard */,
 				A723E0712B2C77B800C22117 /* Info.plist */,
@@ -260,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				A7C21D3E2B2CDFA6004FE5BF /* UIImageView+Extensions.swift */,
+				7C411F502C65062C00F12CEB /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,6 +437,7 @@
 				A723E0B42B2C872100C22117 /* HomeModel.swift in Sources */,
 				A723E0B02B2C872100C22117 /* HomeTableViewCell.swift in Sources */,
 				A7C21D412B2CE26D004FE5BF /* DetailModel.swift in Sources */,
+				7C411F512C65062C00F12CEB /* UIView+Extensions.swift in Sources */,
 				A723E0AC2B2C872100C22117 /* Router.swift in Sources */,
 				A723E0A82B2C872100C22117 /* URLParameterEncoder.swift in Sources */,
 				A723E0A72B2C872100C22117 /* ParameterEncodingError.swift in Sources */,

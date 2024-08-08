@@ -32,7 +32,7 @@ final class DetailsViewController: UIViewController {
     super.viewDidLoad()
     viewModel.getPhoto()
     view.backgroundColor = UIColor.white
-    view.addSubview(containerView)
+    view.addSubviews(containerView)
     containerView.anchorEqualTo(view: view)
   }
 }

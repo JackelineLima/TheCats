@@ -1,4 +1,3 @@
-
 import UIKit
 
 // MARK: - Class
@@ -9,7 +8,6 @@ final class DetailsInfoView: UIView {
 
   private var stackView: UIStackView = {
     let stack = UIStackView()
-    stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = .vertical
     stack.spacing = 8
     return stack
@@ -66,11 +64,6 @@ private extension DetailsInfoView {
   }
   
   func setupConstraints() {
-    NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-    ])
+    stackView.anchorEqualTo(view: self)
   }
 }

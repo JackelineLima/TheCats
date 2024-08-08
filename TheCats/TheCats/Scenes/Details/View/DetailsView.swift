@@ -8,14 +8,12 @@ final class DetailsView: UIView {
   
   private var scrollView: UIScrollView = {
     let element = UIScrollView()
-    element.translatesAutoresizingMaskIntoConstraints = false
     element.contentInsetAdjustmentBehavior = .never
     return element
   }()
   
   private var containerStackView: UIStackView = {
     let stack = UIStackView()
-    stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = .vertical
     stack.spacing = 24
     return stack
@@ -32,7 +30,6 @@ final class DetailsView: UIView {
   
   private var stackView: UIStackView = {
     let stack = UIStackView()
-    stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = .vertical
     stack.spacing = -12
     return stack
@@ -99,23 +96,19 @@ private extension DetailsView {
   }
   
   func addComponents() {
-    addSubview(scrollView)
-    scrollView.addSubview(stackView)
+    addSubviews(scrollView)
+    scrollView.addSubviews(stackView)
     stackView.addArrangedSubview(imageView)
     stackView.addArrangedSubview(containerView)
-    containerView.addSubview(containerStackView)
+    containerView.addSubviews(containerStackView)
     containerStackView.addArrangedSubview(breedView)
     containerStackView.addArrangedSubview(temperantView)
     containerStackView.addArrangedSubview(descriptionView)
   }
   
   func setupConstraints() {
+    scrollView.anchorEqualTo(view: self)
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalTo: topAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      
       stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
       stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
       stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
